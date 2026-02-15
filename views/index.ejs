@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinTrack Pro - Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+</head>
+
+<body>
+    <div id="mock-banner" class="mock-banner">
+        <i class="fas fa-exclamation-triangle"></i>
+        <span>Mock Database Active: Data will be lost on restart.</span>
+        <a href="https://console.firebase.google.com/" target="_blank">Set up Firebase</a>
+    </div>
+    <div class="app-container">
+        <aside class="sidebar">
+            <h2>FinTrack Pro</h2>
+            <nav>
+                <ul>
+                    <li><a href="#" id="nav-dashboard"><i class="fas fa-th-large"></i> Dashboard</a></li>
+                    <li><a href="#" id="nav-expenses"><i class="fas fa-arrow-up-right-from-square"></i> Expenses</a>
+                    </li>
+                    <li><a href="#" id="nav-income"><i class="fas fa-arrow-down-left-from-square"></i> Income</a></li>
+                    <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </nav>
+            <div class="theme-toggle">
+                <button id="dark-mode-toggle" class="btn"><i class="fas fa-moon"></i> Dark Mode</button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-navbar">
+                <h1 id="page-title">Dashboard</h1>
+                <div class="user-profile">
+                    <span id="user-display-name">User</span>
+                </div>
+            </header>
+
+            <section class="summary-grid">
+                <div class="card gradient-card-primary animate-fade">
+                    <h3>Current Balance</h3>
+                    <p id="total-balance">$0.00</p>
+                </div>
+                <div class="card gradient-card-success animate-fade" style="animation-delay: 0.1s;">
+                    <h3>Total Income</h3>
+                    <p id="total-income">$0.00</p>
+                </div>
+                <div class="card gradient-card-danger animate-fade" style="animation-delay: 0.2s;">
+                    <h3>Total Expenses</h3>
+                    <p id="total-expenses">$0.00</p>
+                </div>
+                <div class="card animate-fade" style="animation-delay: 0.3s;">
+                    <h3>Savings %</h3>
+                    <p id="savings-percent">0%</p>
+                </div>
+            </section>
+
+            <section class="charts-grid"
+                style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+                <div class="card">
+                    <canvas id="expenseCategoryChart"></canvas>
+                </div>
+                <div class="card">
+                    <canvas id="monthlyTrendChart"></canvas>
+                </div>
+            </section>
+
+            <section class="table-container animate-fade">
+                <div class="table-header"
+                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <h2>Recent Transactions</h2>
+                    <div>
+                        <button id="add-expense-btn" class="btn btn-primary">Add Expense</button>
+                        <button id="add-income-btn" class="btn btn-secondary">Add Income</button>
+                    </div>
+                </div>
+                <table id="transactionsTable" class="display" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Description</th>
+                            <th>Category</th>
+                            <th>Amount</th>
+                            <th>Type</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <div id="expense-modal" class="modal">
+        <div class="modal-content card animate-fade">
+            <h2 style="margin-bottom: 2rem; font-weight: 700;">Add Expense</h2>
+            <form id="expense-form">
+                <input type="number" id="exp-amount" placeholder="Amount" required>
+                <input type="text" id="exp-category" placeholder="Category (e.g. Food, Rent)" required>
+                <input type="text" id="exp-description" placeholder="Description" required>
+                <input type="date" id="exp-date" required>
+                <div style="margin-top: 2rem; display: flex; gap: 1rem;">
+                    <button type="submit" class="btn btn-primary" style="flex: 1;">Save</button>
+                    <button type="button" class="btn btn-secondary" style="flex: 1;"
+                        onclick="closeModal('expense-modal')">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="income-modal" class="modal">
+        <div class="modal-content card animate-fade">
+            <h2 style="margin-bottom: 2rem; font-weight: 700;">Add Income</h2>
+            <form id="income-form">
+                <input type="number" id="inc-amount" placeholder="Amount" required>
+                <input type="text" id="inc-source" placeholder="Source (e.g. Salary, Freelance)" required>
+                <input type="date" id="inc-date" required>
+                <div style="margin-top: 2rem; display: flex; gap: 1rem;">
+                    <button type="submit" class="btn btn-primary" style="flex: 1;">Save</button>
+                    <button type="button" class="btn btn-secondary" style="flex: 1;"
+                        onclick="closeModal('income-modal')">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/utils.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+
+</html>

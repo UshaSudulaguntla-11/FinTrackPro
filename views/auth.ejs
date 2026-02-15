@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinTrack Pro - Login / Signup</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .auth-card {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .toggle-auth {
+            text-align: center;
+            margin-top: 1rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+    </style>
+</head>
+
+<body class="auth-page animate-fade">
+    <div class="card auth-card">
+        <h2 id="auth-title" style="text-align: center; margin-bottom: 2.5rem; font-weight: 700;">Login to FinTrack Pro
+        </h2>
+        <form id="auth-form">
+            <div class="form-group" id="name-group" style="display: none; margin-bottom: 1.5rem;">
+                <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Display Name</label>
+                <input type="text" id="displayName" placeholder="Your Name">
+            </div>
+            <div class="form-group" style="margin-bottom: 1.5rem;">
+                <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Email</label>
+                <input type="email" id="email" required placeholder="email@example.com">
+            </div>
+            <div class="form-group" style="margin-bottom: 2rem;">
+                <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Password</label>
+                <input type="password" id="password" required placeholder="********">
+            </div>
+            <button type="submit" id="auth-submit-btn" class="btn btn-primary" style="width: 100%;">Login</button>
+        </form>
+        <p class="toggle-auth" id="toggle-auth-link"
+            style="text-align: center; margin-top: 2rem; cursor: pointer; color: var(--primary); font-weight: 500;">
+            Don't have an account? Sign up</p>
+    </div>
+    <script src="js/utils.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+
+</html>
