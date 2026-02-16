@@ -1,139 +1,62 @@
-# 💰 FinTrackPro
+# FinTrackPro
 
-## 🚀 Project Overview
+## Project Overview
+FinTrackPro is a personal finance tracking application that allows users to manage and monitor their financial status efficiently. It provides insights into spending habits, savings goals, and investment opportunities.
 
-**FinTrackPro** is a full-stack **personal finance web application** that helps users manage income, expenses, and savings efficiently.  
+## Features
+- User authentication and authorization
+- Track income and expenses
+- Generate financial reports
+- Set and manage savings goals
+- API integration for real-time financial data
 
-It combines secure authentication, real-time analytics, interactive dashboards, and exportable reports into a seamless user experience.
+## Tech Stack
+- **Frontend:** React.js
+- **Backend:** Node.js, Express
+- **Database:** MongoDB
+- **Auth:** JWT for secure user authentication
 
-**Why it matters:**  
-Financial literacy is key to personal growth. This app empowers users to track spending habits, visualize financial health, and make informed decisions.
+## Installation
+1. Clone the repository: `git clone https://github.com/UshaSudulaguntla-11/FinTrackPro.git`
+2. Navigate into the directory: `cd FinTrackPro`
+3. Install the dependencies:
+   ```bash
+   npm install
+   ```
+4. Set up environment variables as per `.env.example`.
+5. Start the development server:
+   ```bash
+   npm start
+   ```
 
----
+## API Endpoints
+- `GET /api/transactions` - Retrieve all transactions
+- `POST /api/transactions` - Add a new transaction
+- `PUT /api/transactions/:id` - Update an existing transaction
+- `DELETE /api/transactions/:id` - Delete a transaction
 
-## ✨ Key Features
+## Database Structure
+- **Users:** Stores user information and authentication data.
+- **Transactions:** Stores income and expense records linked to users.
+- **Goals:** Stores savings goals set by users.
 
-### 🔐 Secure Authentication
-- Signup/Login with **hashed passwords**  
-- **JWT-based route protection**  
-- Session & token management for security  
+## Security Features
+- Password hashing for secure storage.
+- JWT tokens for user sessions.
+- Validation of user input to prevent injections.
 
-### 📊 Interactive Dashboard
-- Real-time balance, income, and expenses  
-- Savings calculation & insights  
-- **Charts & graphs** using Chart.js  
-- Mobile-friendly & responsive layout  
+## Usage Guide
+1. Sign up or log in to your account.
+2. Add your first transaction using the provided form.
+3. Track your financial health through the dashboard.
 
-### 💳 Transaction Management
-- Add, update, delete **Income & Expenses**  
-- Categorization (Food, Rent, Utilities, etc.)  
-- Searchable, sortable, and paginated tables (DataTables.js)  
+## Contribution Guidelines
+Please follow these steps to contribute:
+1. Fork the repository.
+2. Create a new branch: `git checkout -b feature/YourFeature`
+3. Make your changes and commit them: `git commit -m 'Add some feature'`
+4. Push to the branch: `git push origin feature/YourFeature`
+5. Open a pull request.
 
-### 📁 Export Functionality
-- Export transactions to **CSV**, **Excel**, **PDF**  
-- Easy for reports and bookkeeping  
-
-### 🎨 UI / UX
-- Clean, modern design  
-- Dark mode support  
-- Intuitive navigation  
-
----
-
-## 🛠 Tech Stack
-
-| Layer | Tech |
-|-------|------|
-| **Frontend** | HTML5, CSS3, JavaScript (ES6), Chart.js, DataTables.js |
-| **Backend** | Node.js, Express.js |
-| **Database** | Firebase Firestore |
-| **Authentication** | JWT, bcrypt |
-
----
-
-## 📂 Project Structure
-
-FinTrackPro/
-├── public/ # CSS, JS, Images
-├── routes/ # API endpoints (auth, income, expenses)
-├── controllers/ # Business logic
-├── middleware/ # JWT authentication
-├── config/ # Firebase configuration
-├── server.js # Entry point
-├── package.json
-└── README.md
-
-
----
-
-## ⚙️ Installation & Setup
-
-### 1️⃣ Clone the Repo
-git clone https://github.com/UshaSudulaguntla-11/FinTrackPro.git
-cd FinTrackPro
-2️⃣ Install Dependencies
-npm install
-3️⃣ Configure Environment Variables
-Create a .env file in the root directory:
-
-PORT=3000
-JWT_SECRET=your_jwt_secret
-
-FIREBASE_API_KEY=...
-FIREBASE_AUTH_DOMAIN=...
-FIREBASE_PROJECT_ID=...
-FIREBASE_STORAGE_BUCKET=...
-FIREBASE_MESSAGING_SENDER_ID=...
-FIREBASE_APP_ID=...
-4️⃣ Start the Server
-npm start
-Visit: http://localhost:3000
-
-🔌 API Endpoints
-Auth Routes
-Method	Endpoint	Description
-POST	/api/auth/signup	Register new user
-POST	/api/auth/login	Login & get JWT
-Expense Routes
-Method	Endpoint	Description
-GET	/api/expenses	List all expenses
-POST	/api/expenses	Add expense
-PUT	/api/expenses/:id	Update expense
-DELETE	/api/expenses/:id	Delete expense
-Income Routes
-Method	Endpoint	Description
-GET	/api/income	List all income
-POST	/api/income	Add income
-PUT	/api/income/:id	Update income
-DELETE	/api/income/:id	Delete income
-🗄️ Database Structure (Firestore)
-Users Collection
-{
-  "email": "user@example.com",
-  "password": "hashed_password",
-  "createdAt": "timestamp"
-}
-Expenses Collection
-{
-  "userId": "user_id",
-  "amount": 500,
-  "category": "Food",
-  "description": "Lunch",
-  "date": "2026-02-15"
-}
-Income Collection
-{
-  "userId": "user_id",
-  "amount": 20000,
-  "source": "Salary",
-  "date": "2026-02-01"
-}
-🔒 Security Features
-Password hashing using bcrypt
-
-JWT-based authentication
-
-Environment variable protection
-
-
-
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
