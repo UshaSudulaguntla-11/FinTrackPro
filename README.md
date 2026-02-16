@@ -1,62 +1,81 @@
 # FinTrackPro
 
 ## Project Overview
-FinTrackPro is a personal finance tracking application that allows users to manage and monitor their financial status efficiently. It provides insights into spending habits, savings goals, and investment opportunities.
+FinTrackPro is a comprehensive financial tracking application that allows users to manage their finances effectively. The application provides tools to track expenses, incomes, and generate financial reports.
 
 ## Features
-- User authentication and authorization
-- Track income and expenses
-- Generate financial reports
-- Set and manage savings goals
-- API integration for real-time financial data
+- Expense Tracking
+- Income Tracking
+- Financial Reporting
+- User Authentication
 
 ## Tech Stack
 - **Frontend:** React.js
-- **Backend:** Node.js, Express
+- **Backend:** Node.js, Express.js
 - **Database:** MongoDB
-- **Auth:** JWT for secure user authentication
+- **Authentication:** JWT (JSON Web Tokens)
 
-## Installation
-1. Clone the repository: `git clone https://github.com/UshaSudulaguntla-11/FinTrackPro.git`
-2. Navigate into the directory: `cd FinTrackPro`
-3. Install the dependencies:
+## Installation Guide
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/UshaSudulaguntla-11/FinTrackPro.git
+   ```
+2. Navigate into the project directory:
+   ```bash
+   cd FinTrackPro
+   ```
+3. Install dependencies:
    ```bash
    npm install
    ```
-4. Set up environment variables as per `.env.example`.
-5. Start the development server:
+4. Set up environment variables as required.
+5. Start the application:
    ```bash
    npm start
    ```
 
 ## API Endpoints
-- `GET /api/transactions` - Retrieve all transactions
-- `POST /api/transactions` - Add a new transaction
-- `PUT /api/transactions/:id` - Update an existing transaction
-- `DELETE /api/transactions/:id` - Delete a transaction
+- **GET** /api/expenses - Retrieve all expenses
+- **POST** /api/expenses - Create a new expense
+- **GET** /api/incomes - Retrieve all incomes
+- **POST** /api/incomes - Create a new income
 
-## Database Structure
-- **Users:** Stores user information and authentication data.
-- **Transactions:** Stores income and expense records linked to users.
-- **Goals:** Stores savings goals set by users.
+## Database Schema
+- **Users**:
+  - id
+  - username
+  - password
+
+- **Expenses**:
+  - id
+  - userId
+  - amount
+  - date
+  - description
+
+- **Incomes**:
+  - id
+  - userId
+  - amount
+  - date
+  - source
 
 ## Security Features
-- Password hashing for secure storage.
-- JWT tokens for user sessions.
-- Validation of user input to prevent injections.
+- Password hashing using bcrypt
+- Secure JWT authentication
+- Input validation to prevent SQL injection and XSS attacks
 
 ## Usage Guide
-1. Sign up or log in to your account.
-2. Add your first transaction using the provided form.
-3. Track your financial health through the dashboard.
+- User registration is required to access the features.
+- Once registered, users can log in and begin tracking their finances.
 
-## Contribution Guidelines
-Please follow these steps to contribute:
+## Contributing Guidelines
 1. Fork the repository.
-2. Create a new branch: `git checkout -b feature/YourFeature`
-3. Make your changes and commit them: `git commit -m 'Add some feature'`
-4. Push to the branch: `git push origin feature/YourFeature`
-5. Open a pull request.
+2. Create a new branch for your feature or bug fix.
+3. Write your code and include tests where applicable.
+4. Submit a pull request detailing your changes.
 
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## Roadmap
+- [ ] Implement user roles and permissions
+- [ ] Enhance reporting features
+- [ ] Mobile application support
